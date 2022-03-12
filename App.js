@@ -4,7 +4,7 @@ import Feed from './screens/Feed.js';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Feed />
+      <Feed/>
     </View>
   );
 }
