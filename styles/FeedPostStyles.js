@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#DAC5FF',
         width: '96%',
         left: "2%",
         flexDirection: 'column',

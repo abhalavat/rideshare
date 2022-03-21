@@ -18,7 +18,7 @@ export default function Feed() {
       <ScrollView style={styles.container}>
           {posts.map(post => {
             return(
-              <FeedPost post={post} key={post.key}/>
+              <FeedPost color="feed" post={post} key={post.key}/>
             )
           })}
       </ScrollView>
@@ -42,9 +42,5 @@ const styles = StyleSheet.create({
     width: '100%',
     borderWidth: 1,
     borderColor: 'blue',
-  },
-  text: {
-    flex: 1,
-    fontSize: 10,
   },
 })

@@ -4,6 +4,7 @@ import people from './../assets/people.png'
 import styles from '../styles/FeedPostStyles';
 
 export default function FeedPost(props) {
+    const background = props.color == "post" ?'#E7DAFF' : '#DAC5FF';
     const location = props.post.location;
     const timeText = props.post.time;
     const numPpl = props.post.people;
@@ -11,7 +12,7 @@ export default function FeedPost(props) {
     const driver = props.post.driver;
     return (
         <TouchableOpacity>
-            <View style={styles.container}>
+            <View backgroundColor={background} style={styles.container}>
                 <View style={styles.title}>
                     <Text style={styles.titleText}>{location}</Text>
                 </View>
