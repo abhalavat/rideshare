@@ -9,14 +9,14 @@ export default function Header() {
   return (
     <View style={styles.header}>
         <View style={styles.hamburgerContainer}>
-            <TouchableOpacity style={styles.touchableOpacity}>
-                <Image style={styles.hamburger} source={hamburger}></Image>
+            <TouchableOpacity style={styles.touchableOpacityLeft}>
+                <Image style={styles.img} source={hamburger}></Image>
             </TouchableOpacity>
         </View>
         <Image style={styles.logo} source={logo}></Image>
         <View style={styles.profileContainer}>
-            <TouchableOpacity style={styles.touchableOpacity}>
-                <Image style={styles.profile} source={profile}></Image>
+            <TouchableOpacity style={styles.touchableOpacityRight}>
+                <Image style={styles.img} source={profile}></Image>
             </TouchableOpacity>
         </View>
     </View>

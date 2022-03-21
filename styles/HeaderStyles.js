@@ -13,7 +13,7 @@ export default StyleSheet.create({
         left: '0%',
         width: '20%',
     },
-    profile: {
+    img: {
         width: '100%',
         height: '100%',
         resizeMode: 'contain',
@@ -24,11 +24,6 @@ export default StyleSheet.create({
         left: '0%',
         width: '20%',
     },
-    hamburger: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain',
-    },
     logo: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
@@ -37,10 +32,16 @@ export default StyleSheet.create({
         height: '100%',
         resizeMode: 'contain',
     },
-    touchableOpacity: {
+    touchableOpacityLeft: {
         width: '50%',
-        left: '25%',
+        left: '15%',
         top: '25%',
         height: '50%',
-    }
+    },
+    touchableOpacityRight: {
+        width: '50%',
+        left: '35%',
+        top: '25%',
+        height: '50%',
+    },
 })
