@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
 import { useState } from 'react';
 import Header from './../components/Header';
 import FeedPost from './../components/FeedPost';
 
-export default function Feed() {
+export default function Feed(props) {
   const [posts, setPosts] = useState([
     {key: '1', location: 'HEB', people: 4, time: '5:00 PM', start: 'Villas on Rio', driver: 'Sarah G.'},
     {key: '2', location: 'IM Fields', people: 5, time: '7:00 PM', start: 'RecSports', driver: 'Jamie L.'},
@@ -12,13 +12,18 @@ export default function Feed() {
     {key: '5', location: 'AUS Airport', people: 1, time: '10:30 AM', start: 'San Jacinto Hall', driver: 'Jada M.'},
     {key: '6', location: 'Goodwill', people: 4, time: '4:00 PM', start: 'Dobie', driver: 'Pranav G.'},
   ]);
+  const navigation = props.navigation;
   return (
     <View style={styles.screen}>
       <Header/>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
           {posts.map(post => {
             return(
-              <FeedPost color="feed" post={post} key={post.key}/>
+              <TouchableOpacity onPress={() => {
+                navigation.navigate("IPost", {post: {post}})
+              }}>
+                <FeedPost color="feed" post={post} key={post.key}/>
+              </TouchableOpacity>
             )
           })}
       </ScrollView>
