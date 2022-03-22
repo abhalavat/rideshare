@@ -19,10 +19,10 @@ export default function Feed(props) {
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
           {posts.map(post => {
             return(
-              <TouchableOpacity onPress={() => {
+              <TouchableOpacity key={post.key} onPress={() => {
                 navigation.navigate("IPost", {post: {post}})
               }}>
-                <FeedPost color="feed" post={post} key={post.key}/>
+                <FeedPost color="feed" post={post}/>
               </TouchableOpacity>
             )
           })}
