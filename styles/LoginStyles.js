@@ -51,15 +51,11 @@ export default StyleSheet.create({
         width: '25%',
         height: '10%',
         marginTop: '25%',
-        // borderWidth: 1,
-        // borderColor: 'black',
     },
     textContainer: {
         width: '80%',
         height: '10%',
         marginBottom: '20%',
-        // borderWidth: 1,
-        // borderColor: 'black',
     },
     background: {
         resizeMode: 'contain',
