@@ -1,4 +1,4 @@
-import { TouchableOpacity, Keyboard, KeyboardAvoidingView, Text, View, ScrollView, TextInput, MaskedViewComponent } from 'react-native';
+import { TouchableOpacity, Keyboard, KeyboardAvoidingView, Text, View, ScrollView, TextInput } from 'react-native';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import styles from '../styles/IPostStyles';

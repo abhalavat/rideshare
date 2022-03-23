@@ -9,8 +9,8 @@ export default function FeedPost(props) {
     const timeText = props.post.time;
     const driver = props.post.driver.name;
 
-    let spots = <Text style={styles.leftText}>{numPpl}{'/'}{capacity}</Text>;
-    if (numPpl == capacity) {
+    let spots = <Text style={styles.leftText}>{rsvpd}{'/'}{capacity}</Text>;
+    if (rsvpd == capacity) {
         spots = <Text style={[styles.leftText, {color: 'red'}]}>{rsvpd}{'/'}{capacity}</Text>;
     }
 

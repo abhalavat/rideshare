@@ -1,8 +1,9 @@
-import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ScrollView, Image } from 'react-native';
 import { useState, useEffect } from 'react';
 import Header from './../components/Header';
 import FeedPost from './../components/FeedPost';
 import { getDatabase, ref, onValue, get } from "firebase/database";
+import addPost from '../assets/add.png';
 
 export default function Feed(props) {
   const db = getDatabase();
@@ -35,6 +36,11 @@ export default function Feed(props) {
             )
           })}
       </ScrollView>
+      <TouchableOpacity style={styles.button} onPress={() => {
+        navigation.navigate("CreatePost");
+      }}>
+        <Image style={styles.img} source={addPost}/>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -56,4 +62,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'blue',
   },
+  button: {
+    borderRadius: 200,
+    position: 'absolute',
+    right: '5%',
+    bottom: '6%',
+    width: '20%',
+    height: '9%',
+  },
+  img: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  }
 })
