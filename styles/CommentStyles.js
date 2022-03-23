@@ -22,11 +22,18 @@ export default StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
+        paddingLeft: '1%',
     },
     name: {
-        flex: 12,
+        flex: 9,
+    },
+    time: {
+        flex: 3,
+        paddingRight: '3%',
+        textAlign: 'right',
     },
     comment: {
         paddingLeft: '1.5%',
+        paddingRight: '1.5%',
     }
 })

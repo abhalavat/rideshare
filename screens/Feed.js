@@ -1,28 +1,36 @@
 import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './../components/Header';
 import FeedPost from './../components/FeedPost';
+import { getDatabase, ref, onValue, get } from "firebase/database";
 
 export default function Feed(props) {
-  const [posts, setPosts] = useState([
-    {key: '1', location: 'HEB', people: 4, time: '5:00 PM', start: 'Villas on Rio', driver: 'Sarah G.'},
-    {key: '2', location: 'IM Fields', people: 5, time: '7:00 PM', start: 'RecSports', driver: 'Jamie L.'},
-    {key: '3', location: 'Mt. Bonnell', people: 2, time: '12:00 PM', start: 'Inspire on 22nd', driver: 'Jose R.'},
-    {key: '4', location: 'Zilker Park', people: 5, time: '1:00 PM', start: '26 West', driver: 'Emily L.'},
-    {key: '5', location: 'AUS Airport', people: 1, time: '10:30 AM', start: 'San Jacinto Hall', driver: 'Jada M.'},
-    {key: '6', location: 'Goodwill', people: 4, time: '4:00 PM', start: 'Dobie', driver: 'Pranav G.'},
-  ]);
+  const db = getDatabase();
+
+  const [posts, setPosts] = useState({});
+
+  const dataRef = ref(db, 'posts');
+
+  useEffect(() => {
+    get(dataRef).then((response) => {
+      setPosts(response.val());
+    })
+    onValue(dataRef, (response) => {
+      setPosts(response.val());
+    })
+  }, [])
+
   const navigation = props.navigation;
   return (
     <View style={styles.screen}>
       <Header/>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-          {posts.map(post => {
+          {posts && Object.entries(posts).map(([key, v]) => {
             return(
-              <TouchableOpacity key={post.key} onPress={() => {
-                navigation.navigate("IPost", {post: {post}})
+              <TouchableOpacity key={key} onPress={() => {
+                navigation.navigate("IPost", {post: v, postId: key});
               }}>
-                <FeedPost color="feed" post={post}/>
+                <FeedPost color="feed" post={v}/>
               </TouchableOpacity>
             )
           })}

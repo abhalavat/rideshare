@@ -50,12 +50,12 @@ export default StyleSheet.create({
     logoContainer: {
         width: '25%',
         height: '10%',
-        marginTop: '25%',
+        marginTop: '28%',
     },
     textContainer: {
         width: '80%',
         height: '10%',
-        marginBottom: '20%',
+        marginBottom: '17%',
     },
     background: {
         resizeMode: 'contain',

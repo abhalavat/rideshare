@@ -67,6 +67,9 @@ export default function Login(props) {
           value={email}
           onChangeText={text => setEmail(text)}
           style={styles.inputText}
+          keyboardType="email-address"
+          returnKeyType='done'
+          blurOnSubmit={true}
         />
         <TextInput
           placeholder="Password"
@@ -74,6 +77,8 @@ export default function Login(props) {
           onChangeText={text => setPassword(text)}
           style={styles.inputText}
           secureTextEntry
+          returnKeyType='done'
+          blurOnSubmit={true}
         />
         <TouchableOpacity style={styles.button} onPress={handleSignIn}>
             <Text style={styles.buttonText}>Login</Text>
