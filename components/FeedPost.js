@@ -5,16 +5,13 @@ import styles from '../styles/FeedPostStyles';
 
 export default function FeedPost(props) {
     const background = props.color == "post" ?'#E7DAFF' : '#DAC5FF';
-    const location = props.post.location;
+    const { location, rsvpd, capacity, start } = props.post;
     const timeText = props.post.time;
-    const numPpl = props.post.rsvpd;
-    const capacity = props.post.capacity;
-    const start = props.post.start;
     const driver = props.post.driver.name;
 
     let spots = <Text style={styles.leftText}>{numPpl}{'/'}{capacity}</Text>;
     if (numPpl == capacity) {
-        spots = <Text style={[styles.leftText, {color: 'red'}]}>{numPpl}{'/'}{capacity}</Text>;
+        spots = <Text style={[styles.leftText, {color: 'red'}]}>{rsvpd}{'/'}{capacity}</Text>;
     }
 
     return (
