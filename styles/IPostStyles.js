@@ -13,7 +13,7 @@ export default StyleSheet.create({
     },
     post: {
         borderRadius: 15,
-        paddingBottom: '10%',
+        paddingBottom: '5%',
         backgroundColor: "#E7DAFF",
         marginBottom: '2%',
     },

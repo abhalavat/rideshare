@@ -8,6 +8,10 @@ export default function CreatePost(props) {
   const db = getDatabase();
 
   const [text, setText] = useState("");
+  const [location, setLocation] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [start, setStart] = useState("");
+  const [time, setTime] = useState("");
 
   const dataRef = ref(db, 'posts');
 
