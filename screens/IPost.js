@@ -5,17 +5,24 @@ import styles from '../styles/IPostStyles';
 import Comment from '../components/Comment';
 import FeedPost from '../components/FeedPost';
 import { ref, push, set, onValue, get, getDatabase } from "firebase/database";
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en.json';
 
 export default function IPost(props) {
   const db = getDatabase();
   
   const [comments, setComments] = useState({});
   const [comment, setComment] = useState("");
+  const [timeAgo, setTimeAgo] = useState();
   const { post, postId } = props.route.params;
 
   const dataRef = ref(db, 'posts/' + postId + '/comments');
   
   useEffect(() => {
+    if (!timeAgo) {
+      TimeAgo.addDefaultLocale(en) ;
+      setTimeAgo(new TimeAgo('en-US'));
+    }
     get(dataRef).then((response) => {
       setComments(response.val());
     })
@@ -30,13 +37,12 @@ export default function IPost(props) {
       set(newPostRef, {
         text: comment,
         user: "testname",
-        time: new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
+        time: (new Date()).toISOString()
       });
       setComment("");
       Keyboard.dismiss();
     }
   }
-
   return (
     <View style={styles.screen}>
       <Header/>
@@ -52,6 +58,7 @@ export default function IPost(props) {
           {comments && Object.entries(comments).map(([key, v]) => {
               return(
                 <Comment 
+                  timeConvert={timeAgo}
                   comment={v}
                   key={key}
                 ></Comment>

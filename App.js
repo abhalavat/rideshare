@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from './firebase';
 
+
 export default function App() {
   const Stack = createNativeStackNavigator();
   const app = initializeApp(firebaseConfig);
