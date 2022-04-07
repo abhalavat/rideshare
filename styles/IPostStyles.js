@@ -11,10 +11,17 @@ export default StyleSheet.create({
         marginTop: '8%',
         height: '85%',
     },
+    commentContainer: {
+        borderRadius: 15,
+        borderColor: 'black',
+        borderWidth: 1,
+        marginBottom: '2%',
+        paddingTop: '2%',
+    }, 
     post: {
         borderRadius: 15,
         paddingBottom: '5%',
-        backgroundColor: "#E7DAFF",
+        backgroundColor: "#EF5230",
         marginBottom: '2%',
     },
     postContent: {
@@ -35,20 +42,20 @@ export default StyleSheet.create({
         paddingLeft: 10,
         paddingBottom: 7,
         paddingRight: 10,
-        backgroundColor: "#F9F9F9",
+        backgroundColor: "#FFF2F2",
         borderRadius: 15,
-        borderColor: '#DAC5FF',
+        borderColor: '#EF5230',
         borderWidth: 1,
         width: '75%',
     },
     submit: {
         borderRadius: 15,
-        borderColor: '#DAC5FF',
+        borderColor: '#EF5230',
         borderWidth: 1,
         width: '20%',
         marginLeft: '2%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F3EDFF',
+        backgroundColor: '#FFF2F2',
     }
 })

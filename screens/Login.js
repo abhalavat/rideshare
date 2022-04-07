@@ -9,7 +9,6 @@ import text from '../assets/text-logo-white.png';
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [invalidEmail, setInvalidEmail] = useState(true);
   const navigation = props.navigation;
 
   const user = null;

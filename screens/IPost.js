@@ -20,7 +20,7 @@ export default function IPost(props) {
   
   useEffect(() => {
     if (!timeAgo) {
-      TimeAgo.addDefaultLocale(en) ;
+      TimeAgo.addLocale(en);
       setTimeAgo(new TimeAgo('en-US'));
     }
     get(dataRef).then((response) => {
@@ -43,9 +43,12 @@ export default function IPost(props) {
       Keyboard.dismiss();
     }
   }
+
+  const navigation = props.navigation;
+
   return (
     <View style={styles.screen}>
-      <Header/>
+      <Header navigation={navigation}/>
       <KeyboardAvoidingView 
         style={styles.container}
         behavior={Platform.OS === 'ios' ? "padding" : "height"}
@@ -55,7 +58,8 @@ export default function IPost(props) {
             <FeedPost color="post" post={post}></FeedPost>
             <Text style={styles.postContent}>{post.text}</Text>
           </View>
-          {comments && Object.entries(comments).map(([key, v]) => {
+          <View style={styles.commentContainer}>
+            {comments && Object.entries(comments).map(([key, v]) => {
               return(
                 <Comment 
                   timeConvert={timeAgo}
@@ -64,6 +68,7 @@ export default function IPost(props) {
                 ></Comment>
               )
             })}
+          </View>
           <View style={styles.addComment}>
             <TextInput 
               scrollEnabled={false} 
