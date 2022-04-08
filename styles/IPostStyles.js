@@ -20,15 +20,19 @@ export default StyleSheet.create({
     }, 
     post: {
         borderRadius: 15,
-        paddingBottom: '5%',
+        paddingBottom: '0%',
         backgroundColor: "#EF5230",
-        marginBottom: '2%',
+        marginBottom: '4%',
     },
     postContent: {
         color: 'white',
         textAlign: 'center',
         paddingLeft: '3%',
         paddingRight: '3%',
+    },
+    driver: {
+        marginTop: '3%',
+        fontSize: 16,
     },
     addComment: {
         width: '100%',

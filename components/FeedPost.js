@@ -2,18 +2,20 @@ import { Text, View, Image } from 'react-native';
 import time from './../assets/time.png';
 import people from './../assets/people.png'
 import cost from './../assets/cost.png';
-import styles from '../styles/FeedPostStyles';
+import iPostStyles from '../styles/PostIPostStyles';
+import feedStyles from '../styles/FeedPostStyles';
 
 export default function FeedPost(props) {
-    // const background = props.color == "post" ?'#E7DAFF' : '#DAC5FF';
+    const feed = props.location == 'feed';
+    const styles = feed ? feedStyles : iPostStyles;
     const background = '#EF5230';
     const { location, rsvpd, capacity, start } = props.post;
     const timeText = props.post.time;
-    const driver = props.post.driver.name;
+    const price = props.post.price;
 
-    let spots = <Text style={styles.leftText}>{rsvpd}{'/'}{capacity}</Text>;
+    let spots = <Text style={styles.boxText}>{rsvpd}{'/'}{capacity}</Text>;
     if (rsvpd == capacity) {
-        spots = <Text style={[styles.leftText, {color: 'red'}]}>{rsvpd}{'/'}{capacity}</Text>;
+        spots = <Text style={[styles.boxText, {color: 'red'}]}>{rsvpd}{'/'}{capacity}</Text>;
     }
 
     return (
@@ -29,13 +31,13 @@ export default function FeedPost(props) {
                     <View style={styles.imgContainer}>
                         <Image source={cost} style={styles.img}/>
                     </View>
-                    <Text style={[styles.boxText, styles.leftText]}>$3</Text>
+                    <Text style={[styles.boxText, styles.leftText]}>${price}</Text>
                 </View>
                 <View style={styles.box}>
                     <View style={styles.imgContainer}>
                         <Image source={people} style={styles.img}/>
                     </View>
-                    <Text style={styles.boxText}>{spots}</Text>
+                    {spots}
                 </View>
                 <View style={[styles.box, styles.rightBox]}>
                     <View style={[styles.imgContainer, styles.rightImgContainer]}>

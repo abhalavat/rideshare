@@ -20,7 +20,12 @@ export default StyleSheet.create({
         top: '10%',
         resizeMode: 'contain',
     },
-    hamburgerContainer: {
+    logoImg: {
+        bottom: '0%',
+        width: '70%',
+        left: '15%',
+    },
+    homeContainer: {
         justifyContent: 'flex-start',
         bottom: '0%',
         left: '0%',
@@ -32,7 +37,6 @@ export default StyleSheet.create({
         bottom: '0%',
         width: '60%',
         height: '100%',
-        resizeMode: 'contain',
     },
     touchableOpacityLeft: {
         width: '50%',

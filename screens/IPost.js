@@ -55,8 +55,9 @@ export default function IPost(props) {
       >
         <ScrollView keyboardShouldPersistTaps='handled' showsVerticalScrollIndicator={false}>
           <View style={styles.post}>
-            <FeedPost color="post" post={post}></FeedPost>
+            <FeedPost location='ipost' post={post}></FeedPost>
             <Text style={styles.postContent}>{post.text}</Text>
+            <Text style={[styles.postContent, styles.driver]}>Driver: {post.driver.name}</Text>
           </View>
           <View style={styles.commentContainer}>
             {comments && Object.entries(comments).map(([key, v]) => {

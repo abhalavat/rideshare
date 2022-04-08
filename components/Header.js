@@ -1,6 +1,6 @@
 import { View, Image, TouchableOpacity } from 'react-native';
 import logo from './../assets/text-logo.png';
-import hamburger from './../assets/hamburger.png';
+import home from './../assets/home.png';
 import styles from './../styles/HeaderStyles';
 import post from './../assets/post.png';
 
@@ -10,12 +10,16 @@ export default function Header(props) {
 
     return (
         <View style={styles.header}>
-            <View style={styles.hamburgerContainer}>
-                <TouchableOpacity style={styles.touchableOpacityLeft}>
-                    <Image style={styles.img} source={hamburger}></Image>
+            <View style={styles.homeContainer}>
+                <TouchableOpacity style={styles.touchableOpacityLeft} onPress={() => {
+                    navigation.navigate("Feed");
+                }}>
+                    <Image style={styles.img} source={home}></Image>
                 </TouchableOpacity>
             </View>
-            <Image style={styles.logo} source={logo}></Image>
+            <View style={styles.logo}>
+                <Image style={[styles.img, styles.logoImg]} source={logo}></Image>
+            </View>
             <View style={styles.profileContainer}>
                 <TouchableOpacity style={styles.touchableOpacityRight} onPress={() => {
                     navigation.navigate("CreatePost");

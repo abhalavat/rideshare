@@ -30,7 +30,7 @@ export default function Feed(props) {
               <TouchableOpacity key={key} onPress={() => {
                 navigation.navigate("IPost", {post: v, postId: key});
               }}>
-                <FeedPost color="feed" post={v}/>
+                <FeedPost location='feed' post={v}/>
               </TouchableOpacity>
             )
           })}
