@@ -61,8 +61,9 @@ export default function Login(props) {
         <View style={styles.textContainer}>
           <Image source={text} style={styles.img}/>
         </View>
+        <Text style={styles.prompt}>Please log-in with your UT e-mail</Text>
         <TextInput
-          placeholder="Email"
+          placeholder="e-mail"
           value={email}
           onChangeText={text => setEmail(text)}
           style={styles.inputText}
@@ -71,7 +72,7 @@ export default function Login(props) {
           blurOnSubmit={true}
         />
         <TextInput
-          placeholder="Password"
+          placeholder="password"
           value={password}
           onChangeText={text => setPassword(text)}
           style={styles.inputText}
@@ -79,7 +80,7 @@ export default function Login(props) {
           returnKeyType='done'
           blurOnSubmit={true}
         />
-        <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+        <TouchableOpacity style={[styles.button, styles.topButton]} onPress={handleSignIn}>
             <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleSignUp}>
