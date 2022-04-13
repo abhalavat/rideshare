@@ -19,6 +19,7 @@ export default function Login(props) {
       createUserWithEmailAndPassword(auth, email, password)
           .then(userCredentials => {
               const user = userCredentials.user;
+              navigation.navigate("Signup");
           })
           .catch(error => alert(error.message));
     } else {
