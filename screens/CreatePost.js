@@ -14,46 +14,45 @@ export default function CreatePost(props) {
   const [start, setStart] = useState("");
   const [time, setTime] = useState("");
   const [price, setPrice] = useState();
+  const [mode, setMode] = useState("");
 
   const prices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const modes = ["Car", "Bus", "Walking"];
 
   const dataRef = ref(db, 'posts');
 
-//   function addComment() {
-//     if (comment != "") {
-//       const newPostRef = push(dataRef);
-//       set(newPostRef, {
-//         text: comment,
-//         user: "testname",
-//         time: new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-//       });
-//       setComment("");
-//       Keyboard.dismiss();
-//     }
-//   }
-
   function submitAll() {
-    // check if all fields are filled in first
-    // const newPostRef = push(dataRef);
-    // set(newPostRef, {
-    //     text: comment,
-    //     user: "testname",
-    //     time: new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-    // });
-    // reset vals to default
+    const newPostRef = push(dataRef);
+    set(newPostRef, {
+        text: text,
+        driver: {name: 'testname', uid: 'uid'},
+        capacity: capacity,
+        location: location,
+        price: price,
+        rsvpd: 0,
+        start: start,
+        time: time
+    });
+    setLocation("");
+    setText("");
+    setCapacity("");
+    setStart("");
+    setTime("");
+    setPrice("");
+    setMode("");
     Keyboard.dismiss();
   }
 
     return (
         <View style={styles.screen}>
-            <Header/>
+            <Header navigation={props.navigation}/>
             <View style={styles.container}>
               <Text style={styles.subtitle}>Destination</Text>
               <TextInput 
                   scrollEnabled={false} 
                   multiline={true} 
-                  value={text} 
-                  onChangeText={newText => setText(newText)} 
+                  value={location} 
+                  onChangeText={newText => setLocation(newText)} 
                   style={styles.input} 
                   placeholder=""
                   returnKeyType='done'
@@ -64,8 +63,8 @@ export default function CreatePost(props) {
               <TextInput 
                   scrollEnabled={false} 
                   multiline={true} 
-                  value={text} 
-                  onChangeText={newText => setText(newText)} 
+                  value={start} 
+                  onChangeText={newText => setStart(newText)} 
                   style={styles.input} 
                   placeholder=""
                   returnKeyType='done'
@@ -76,8 +75,8 @@ export default function CreatePost(props) {
               <TextInput 
                   scrollEnabled={false} 
                   multiline={true} 
-                  value={text} 
-                  onChangeText={newText => setText(newText)} 
+                  value={time} 
+                  onChangeText={newText => setTime(newText)} 
                   style={styles.input} 
                   placeholder=""
                   returnKeyType='done'
@@ -85,22 +84,30 @@ export default function CreatePost(props) {
               >
               </TextInput>
               <Text style={styles.subtitle}>Mode of Transportation</Text>
-              <TextInput 
-                  scrollEnabled={false} 
-                  multiline={true} 
-                  value={text} 
-                  onChangeText={newText => setText(newText)} 
-                  style={styles.input} 
-                  placeholder=""
-                  returnKeyType='done'
-                  blurOnSubmit={true}
-              >
-              </TextInput>
-              <Text style={styles.subtitle}>Price</Text>
-              <View style={styles.input}>
+              <View style={styles.dropdown}>
                 <SelectDropdown
-                  style={styles.input}
+                  style={styles.dropdown}
+                  buttonStyle={styles.options}
+                  data={modes}
+                  defaultButtonText={"Select a mode of transport"}
+                  onSelect={(selecteditem) => {
+                    setMode(selecteditem);
+                  }}
+                  buttonTextAfterSelection={(selecteditem) => {
+                    return selecteditem;
+                  }}
+                  rowTextForSelection={(selecteditem) => {
+                    return selecteditem;
+                  }}
+                />
+              </View>
+              <Text style={styles.subtitle}>Price</Text>
+              <View style={styles.dropdown}>
+                <SelectDropdown
+                  style={styles.dropdown}
+                  buttonStyle={styles.options}
                   data={prices}
+                  defaultButtonText={"Select a price"}
                   onSelect={(selecteditem) => {
                     setPrice(selecteditem);
                   }}
@@ -111,41 +118,34 @@ export default function CreatePost(props) {
                     return selecteditem;
                   }}
                 />
-                {/* <Picker 
-                  style={styles.picker}
-                  selectedValue = {price}
-                  onValueChange={(itemValue) => {
-                    setPrice(itemValue);
-                  }}
-                  mode='dropdown'
-                  itemStyle={{height: 50}}
-                >
-                  <Picker.Item style={styles.pick} label="0" value={0}/>
-                  <Picker.Item style={styles.pick} label="1" value={1}/>
-                  <Picker.Item style={styles.pick} label="2" value={2}/>
-                  <Picker.Item style={styles.pick} label="3" value={3}/>
-                  <Picker.Item style={styles.pick} label="4" value={4}/>
-                  <Picker.Item style={styles.pick} label="5" value={5}/>
-                  <Picker.Item style={styles.pick} label="6" value={6}/>
-                  <Picker.Item style={styles.pick} label="7" value={7}/>
-                  <Picker.Item style={styles.pick} label="8" value={8}/>
-                  <Picker.Item style={styles.pick} label="9" value={9}/>
-                </Picker> */}
               </View>
               <Text style={styles.subtitle}>Attendees</Text>
               <TextInput 
                   scrollEnabled={false} 
                   multiline={true} 
+                  value={capacity} 
+                  onChangeText={newText => setCapacity(newText)} 
+                  style={styles.input} 
+                  placeholder=""
+                  returnKeyType='done'
+                  blurOnSubmit={true}
+                  keyboardType='numeric'
+              >
+              </TextInput>
+              <Text style={styles.subtitle}>Description</Text>
+              <TextInput 
+                  scrollEnabled={false} 
+                  multiline={true} 
                   value={text} 
                   onChangeText={newText => setText(newText)} 
-                  style={styles.input} 
+                  style={styles.description} 
                   placeholder=""
                   returnKeyType='done'
                   blurOnSubmit={true}
               >
               </TextInput>
               <TouchableOpacity onPress={submitAll} style={styles.submit}>
-                  <Text>Submit</Text>
+                  <Text style={styles.submitText}>Submit</Text>
               </TouchableOpacity>
             </View>
         </View>

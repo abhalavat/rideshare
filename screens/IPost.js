@@ -59,8 +59,8 @@ export default function IPost(props) {
             <Text style={styles.postContent}>{post.text}</Text>
             <Text style={[styles.postContent, styles.driver]}>Driver: {post.driver.name}</Text>
           </View>
-          <View style={styles.commentContainer}>
-            {comments && Object.entries(comments).map(([key, v]) => {
+          {comments && <View style={styles.commentContainer}>
+            {Object.entries(comments).map(([key, v]) => {
               return(
                 <Comment 
                   timeConvert={timeAgo}
@@ -69,7 +69,7 @@ export default function IPost(props) {
                 ></Comment>
               )
             })}
-          </View>
+          </View>}
           <View style={styles.addComment}>
             <TextInput 
               scrollEnabled={false} 

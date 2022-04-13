@@ -6,7 +6,7 @@ export default StyleSheet.create({
         left: "2%",
         flexDirection: 'column',
         marginTop: '2%',
-        marginBottom: '-5%',
+        marginBottom: '-7%',
         borderRadius: 20,
         shadowColor: '#171717',
         shadowOffset: {width: 0, height: 5},
