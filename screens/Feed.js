@@ -13,27 +13,42 @@ export default function Feed(props) {
 
   useEffect(() => {
     get(dataRef).then((response) => {
-      setPosts(response.val());
+      setPosts(reverseObj(response.val()));
     })
     onValue(dataRef, (response) => {
-      setPosts(response.val());
+      setPosts(reverseObj(response.val()));
     })
   }, [])
+
+  const reverseObj = (obj) => {
+    let newObj = {}
+  
+    Object.keys(obj)
+      .sort()
+      .reverse()
+      .forEach((key) => {
+        newObj[key] = obj[key]
+      })
+  
+    return newObj  
+  }
 
   const navigation = props.navigation;
   return (
     <View style={styles.screen}>
       <Header navigation={navigation}/>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-          {posts && Object.entries(posts).map(([key, v]) => {
-            return(
-              <TouchableOpacity key={key} onPress={() => {
-                navigation.navigate("IPost", {post: v, postId: key});
-              }}>
-                <FeedPost location='feed' post={v}/>
-              </TouchableOpacity>
-            )
-          })}
+          <View style={styles.viewContainer}>
+            {posts && Object.entries(posts).map(([key, val]) => {
+              return(
+                <TouchableOpacity key={key} onPress={() => {
+                  navigation.navigate("IPost", {post: val, postId: key});
+                }}>
+                  <FeedPost location='feed' post={val}/>
+                </TouchableOpacity>
+              )
+            })}
+          </View>
       </ScrollView>
     </View>
   );
@@ -43,17 +58,13 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     width: '100%',
-    alignItems: 'center',
   },
   container: {
     flex: 1,
-    width: '100%',
     marginTop: '8%',
-    position: 'relative',
   },
   viewContainer: {
-    width: '100%',
-    borderWidth: 1,
-    borderColor: 'blue',
-  },
+    flexDirection: 'column',
+    flex: 1,
+  }
 })

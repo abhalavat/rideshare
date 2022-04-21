@@ -15,6 +15,8 @@ export default function IPost(props) {
   const [comment, setComment] = useState("");
   const [timeAgo, setTimeAgo] = useState();
   const { post, postId } = props.route.params;
+  //FIX TO POINT TO REAL USER
+  const user = {name: "testname"};
 
   const dataRef = ref(db, 'posts/' + postId + '/comments');
   
@@ -36,7 +38,7 @@ export default function IPost(props) {
       const newPostRef = push(dataRef);
       set(newPostRef, {
         text: comment,
-        user: "testname",
+        user: user.name,
         time: (new Date()).toISOString()
       });
       setComment("");

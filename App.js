@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Feed from './screens/Feed.js';
 import IPost from './screens/IPost.js';
 import Login from './screens/Login.js';
