@@ -2,13 +2,11 @@ import { Text, View, Image } from 'react-native';
 import time from './../assets/time.png';
 import people from './../assets/people.png'
 import cost from './../assets/cost.png';
-import iPostStyles from '../styles/PostIPostStyles';
-import feedStyles from '../styles/FeedPostStyles';
+import styles from '../styles/FeedPostStyles';
+import shadowStyles from '../styles/ShadowStyles';
 
 export default function FeedPost(props) {
     const feed = props.location == 'feed';
-    const styles = feed ? feedStyles : iPostStyles;
-    const background = '#EF5230';
     const { location, rsvpd, capacity, start } = props.post;
     const timeText = props.post.time;
     const price = props.post.price;
@@ -19,7 +17,7 @@ export default function FeedPost(props) {
     }
 
     return (
-        <View backgroundColor={background} style={styles.container}>
+        <View style={feed ? [styles.container, shadowStyles.container] : styles.container}>
             <View style={styles.title}>
                 <Text style={styles.titleText}>{location}</Text>
             </View>

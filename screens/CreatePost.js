@@ -1,5 +1,5 @@
 import { TouchableOpacity, Keyboard, Text, View, TextInput } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import styles from '../styles/CreatePostStyles';
 import { ref, push, set, onValue, get, getDatabase } from "firebase/database";
@@ -15,17 +15,27 @@ export default function CreatePost(props) {
   const [time, setTime] = useState("");
   const [price, setPrice] = useState();
   const [mode, setMode] = useState("");
+  const [user, setUser] = useState("");
+
+  const uid = props.route.params.uid;
 
   const prices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const modes = ["Car", "Bus", "Walking"];
 
   const dataRef = ref(db, 'posts');
+  const userRef = ref(db, 'users/' + uid);
+
+  useEffect(() => {
+    get(userRef).then((response) => {
+      setUser(response.val());
+    })
+  })
 
   function submitAll() {
     const newPostRef = push(dataRef);
     set(newPostRef, {
         text: text,
-        driver: {name: 'testname', uid: 'uid'},
+        driver: {name: user, uid: uid},
         capacity: capacity,
         location: location,
         price: price,

@@ -8,6 +8,8 @@ export default function Header(props) {
 
     const navigation = props.navigation;
 
+    const uid = props.uid;
+
     return (
         <View style={styles.header}>
             <View style={styles.homeContainer}>
@@ -22,7 +24,7 @@ export default function Header(props) {
             </View>
             <View style={styles.profileContainer}>
                 <TouchableOpacity style={styles.touchableOpacityRight} onPress={() => {
-                    navigation.navigate("CreatePost");
+                    navigation.navigate("CreatePost", {uid: uid});
                 }}>
                     <Image style={styles.img} source={post}></Image>
                 </TouchableOpacity>

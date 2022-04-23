@@ -11,15 +11,15 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
   const navigation = props.navigation;
 
-  const user = null;
+  let user = null;
+
   const auth = getAuth();
 
   const handleSignUp = () => {
     if (email.substring(email.length - 11) =='@utexas.edu') {
       createUserWithEmailAndPassword(auth, email, password)
           .then(userCredentials => {
-              const user = userCredentials.user;
-              navigation.navigate("Signup");
+              navigation.navigate("Signup", {uid: userCredentials.user.uid});
           })
           .catch(error => alert(error.message));
     } else {
@@ -30,8 +30,7 @@ export default function Login(props) {
   const handleSignIn = () => {
       signInWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
-        const user = userCredentials.user;
-        navigation.navigate("Feed");
+        navigation.navigate("Feed", {uid: userCredentials.user.uid});
       })
       .catch(error => {
         if (error.message == "Firebase: Error (auth/user-not-found)."){
@@ -47,7 +46,7 @@ export default function Login(props) {
   useEffect(() => {
       const subscriber = onAuthStateChanged(auth, user => {
           if (user) {
-              navigation.navigate("Feed");
+              navigation.navigate("Feed", {uid: userCredentials.user.uid});
           }
       })
       return subscriber

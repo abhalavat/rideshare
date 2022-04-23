@@ -7,4 +7,10 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    textInput: {
+        borderWidth: 1,
+        borderColor: 'black',
+        width: '50%',
+        // height: '90%',
+    }
 })

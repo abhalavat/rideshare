@@ -14,17 +14,22 @@ export default function IPost(props) {
   const [comments, setComments] = useState({});
   const [comment, setComment] = useState("");
   const [timeAgo, setTimeAgo] = useState();
-  const { post, postId } = props.route.params;
-  //FIX TO POINT TO REAL USER
-  const user = {name: "testname"};
+  const [user, setUser] = useState({});
+  const { post, postId, uid } = props.route.params;
 
   const dataRef = ref(db, 'posts/' + postId + '/comments');
+
+  const userRef = ref(db, 'users/' + uid);
   
   useEffect(() => {
     if (!timeAgo) {
       TimeAgo.addLocale(en);
       setTimeAgo(new TimeAgo('en-US'));
     }
+    get(userRef).then((response) => {
+      setUser({name: response.val()});
+    })
+    user.name = get(userRef);
     get(dataRef).then((response) => {
       setComments(response.val());
     })
@@ -55,7 +60,7 @@ export default function IPost(props) {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? "padding" : "height"}
       >
-        <ScrollView keyboardShouldPersistTaps='handled' showsVerticalScrollIndicator={false}>
+        <ScrollView keyboardShouldPersistTaps='handled' showsVerticalScrollIndicator={false} keyboardDismissMode={'interactive'}>
           <View style={styles.post}>
             <FeedPost location='ipost' post={post}></FeedPost>
             <Text style={styles.postContent}>{post.text}</Text>
