@@ -55,7 +55,7 @@ export default function IPost(props) {
 
   return (
     <View style={styles.screen}>
-      <Header navigation={navigation}/>
+      <Header navigation={navigation} uid={uid}/>
       <KeyboardAvoidingView 
         style={styles.container}
         behavior={Platform.OS === 'ios' ? "padding" : "height"}
@@ -85,6 +85,7 @@ export default function IPost(props) {
               onChangeText={text => setComment(text)} 
               style={styles.input} 
               placeholder="Add Comment..."
+              // placeholderTextColor = '#F4866E'
               returnKeyType='done'
               blurOnSubmit={true}
             >

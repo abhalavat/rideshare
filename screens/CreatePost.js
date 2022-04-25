@@ -51,11 +51,12 @@ export default function CreatePost(props) {
     setPrice("");
     setMode("");
     Keyboard.dismiss();
+    props.navigation.navigate("Feed", {uid: uid})
   }
 
     return (
         <View style={styles.screen}>
-            <Header navigation={props.navigation}/>
+            <Header navigation={props.navigation} uid={uid}/>
             <View style={styles.container}>
               <Text style={styles.subtitle}>Destination</Text>
               <TextInput 

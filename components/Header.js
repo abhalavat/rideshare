@@ -14,7 +14,7 @@ export default function Header(props) {
         <View style={styles.header}>
             <View style={styles.homeContainer}>
                 <TouchableOpacity style={styles.touchableOpacityLeft} onPress={() => {
-                    navigation.navigate("Feed");
+                    navigation.navigate("Feed", {uid: uid});
                 }}>
                     <Image style={styles.img} source={home}></Image>
                 </TouchableOpacity>
