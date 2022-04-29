@@ -1,4 +1,4 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, ImageBackground } from 'react-native';
 import time from './../assets/time.png';
 import people from './../assets/people.png'
 import cost from './../assets/cost.png';
@@ -18,6 +18,7 @@ export default function FeedPost(props) {
 
     return (
         <View style={feed ? [styles.container, shadowStyles.container] : styles.container}>
+        <ImageBackground style={styles.background} source={{uri: "https://i.ibb.co/WnY6Nsq/zilkerpark.jpg"}}>
             <View style={styles.title}>
                 <Text style={styles.titleText}>{location}</Text>
             </View>
@@ -44,6 +45,7 @@ export default function FeedPost(props) {
                     <Text style={[styles.boxText, styles.rightText]}>{timeText}</Text>
                 </View>
             </View> 
+        </ImageBackground>
         </View>
   );
 };

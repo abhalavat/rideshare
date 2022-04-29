@@ -7,7 +7,10 @@ export default StyleSheet.create({
         flexDirection: 'column',
         marginTop: 10,
         borderRadius: 20,
-        backgroundColor: '#EF5230',
+        flex: 1,
+        borderColor: '#EF5230',
+        borderWidth: 1
+        // backgroundColor: '#EF5230',
     },
     title: {
         width: '100%',
@@ -22,6 +25,8 @@ export default StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         textAlignVertical: 'center',
+        textShadowColor: 'black',
+        textShadowRadius: 1,
     },
     start: {
         width: '100%',
@@ -34,6 +39,8 @@ export default StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 15,
+        textShadowColor: 'black',
+        textShadowRadius: 1,
     },
     box: {
         borderRadius: 50,
@@ -81,5 +88,12 @@ export default StyleSheet.create({
     },
     leftText: {
         marginLeft: '-30%',
+    },
+    background: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+        borderRadius: 20,
+        overflow: 'hidden',
     }
 })
