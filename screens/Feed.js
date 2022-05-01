@@ -39,7 +39,7 @@ export default function Feed(props) {
   return (
     <View style={styles.screen}>
       <Header navigation={navigation} uid={uid}/>
-      <ScrollView style={styles.container} contentOffset={{x: 0, y: 35}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.container} contentOffset={{x: 0, y: 33}} showsVerticalScrollIndicator={false}>
         <TextInput 
           scrollEnabled={false} 
           multiline={true} 
