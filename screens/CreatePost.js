@@ -41,7 +41,8 @@ export default function CreatePost(props) {
         price: price,
         rsvpd: 0,
         start: start,
-        time: time
+        time: time,
+        img: "https://i.ibb.co/vDgZzCz/mt-bonnell-1.png"
     });
     setLocation("");
     setText("");

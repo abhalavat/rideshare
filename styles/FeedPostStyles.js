@@ -9,8 +9,7 @@ export default StyleSheet.create({
         borderRadius: 20,
         flex: 1,
         borderColor: '#EF5230',
-        borderWidth: 1
-        // backgroundColor: '#EF5230',
+        borderWidth: 1,
     },
     title: {
         width: '100%',
@@ -18,19 +17,21 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: '3%',
+        paddingTop: 13,
     },
     titleText: {
-        fontSize: 30,
+        fontSize: 32,
         color: 'white',
         textAlign: 'center',
         textAlignVertical: 'center',
         textShadowColor: 'black',
         textShadowRadius: 1,
+        fontWeight: 'bold',
+        fontFamily: 'ArialRoundedMTBold',
     },
     start: {
         width: '100%',
-        height: 20,
+        height: 25,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -41,6 +42,7 @@ export default StyleSheet.create({
         fontSize: 15,
         textShadowColor: 'black',
         textShadowRadius: 1,
+        fontFamily: 'ArialRoundedMTBold',
     },
     box: {
         borderRadius: 50,
@@ -64,7 +66,7 @@ export default StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         flex: 1, 
-        marginBottom: '3%',
+        marginBottom: 10,
         paddingRight: '5%',
         paddingLeft: '6%',
     },
@@ -95,5 +97,6 @@ export default StyleSheet.create({
         resizeMode: 'contain',
         borderRadius: 20,
         overflow: 'hidden',
+        opacity: 1,
     }
 })

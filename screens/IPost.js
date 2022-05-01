@@ -85,7 +85,6 @@ export default function IPost(props) {
               onChangeText={text => setComment(text)} 
               style={styles.input} 
               placeholder="Add Comment..."
-              // placeholderTextColor = '#F4866E'
               returnKeyType='done'
               blurOnSubmit={true}
             >
