@@ -47,7 +47,6 @@ export default function Feed(props) {
           onChangeText={text => setSearch(text)} 
           style={styles.search} 
           placeholder="Search..."
-          // placeholderTextColor = '#F4866E'
           returnKeyType='done'
           blurOnSubmit={true}
         >
