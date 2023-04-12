@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { LogBox, StyleSheet } from 'react-native';
 import Feed from './screens/Feed.js';
 import IPost from './screens/IPost.js';
 import Login from './screens/Login.js';
@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from './firebase';
-
+LogBox.ignoreAllLogs();
 
 export default function App() {
   const Stack = createNativeStackNavigator();

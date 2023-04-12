@@ -33,6 +33,7 @@ export default function CreatePost(props) {
 
   function submitAll() {
     const newPostRef = push(dataRef);
+    //dynamic values except img, fix later
     set(newPostRef, {
         text: text,
         driver: {name: user, uid: uid},
@@ -42,7 +43,7 @@ export default function CreatePost(props) {
         rsvpd: 0,
         start: start,
         time: time,
-        img: "https://i.ibb.co/vDgZzCz/mt-bonnell-1.png"
+        img: "https://i.postimg.cc/XqJJ8wDr/zilkerpark.jpg"
     });
     setLocation("");
     setText("");
